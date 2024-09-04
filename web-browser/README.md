@@ -3,3 +3,4 @@
 - qutebrowser
 - firefox
 - links
+- ehg

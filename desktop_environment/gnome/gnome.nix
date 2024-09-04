@@ -24,7 +24,7 @@
     evolution
     resources
     gnome-contacts
-    gvfs
+    # gvfs
     nautilus-open-any-terminal
     nautilus-open-in-blackbox
     seahorse

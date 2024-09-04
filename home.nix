@@ -7,16 +7,18 @@
   ...
 }: let
   sources = import ./npins;
+  # isDarwin = pkgs.stdenv.isDarwin;
+  # isLinux = pkgs.stdenv.isLinux;
 in {
   imports = [
     (sources.catppuccin + "/modules/home-manager")
     # (sources.stylix).homeManagerModules.stylix
-    ./programs/git.nix
     ./modules/common/default.nix
     ./desktop_environment
     ./modal-editor
     ./shell
     ./web-browser
+    ./programs
   ];
 
   # Enable settings that make Home Manager work better on
@@ -261,8 +263,11 @@ in {
     ];
 
     sessionVariables = {
-      EDITOR = "${pkgs.helix}/bin/helix";
+      EDITOR = "hx";
       TERM = "xterm-256color";
+      BROWSER = "firefox";
+      LANG = "en_US.UTF-8";
+
       PNPM_HOME = "/home/keinsell/.cache/pnpm";
       COREPACK_HOME = "/home/keinsell/.cache/corepack";
       PAGER = "${pkgs.glow}/bin/glow";
@@ -521,13 +526,6 @@ in {
 
     gnome-keyring = {
       enable = true;
-    };
-
-    gpg-agent = {
-      enable = true;
-      defaultCacheTtl = 1800;
-      enableSshSupport = true;
-      enableExtraSocket = true;
     };
 
     lorri = {
