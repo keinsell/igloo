@@ -3,6 +3,8 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [macchina freshfetch];
+
   programs = {
     nushell = {
       enable = true;
