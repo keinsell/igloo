@@ -13,8 +13,9 @@ in {
     # (sources.stylix).homeManagerModules.stylix
     ./programs/git.nix
     ./modules/common/default.nix
-    ./modules/modal-editor
-    ./modules/shell
+    ./desktop_environment
+    ./modal-editor
+    ./shell
     ./web-browser
   ];
 
@@ -122,18 +123,19 @@ in {
 
       # Runtimes and Libraries
       pkgs.go
-      # pkgs.gopls
 
       # ---------
       # Rust
       # ---------
       pkgs.rustup
       pkgs.rustfilt
+
       # ---------
       # Zig
       # ---------
       pkgs.zls
       pkgs.zig
+
       # ---------
       # Java
       # ---------
@@ -470,7 +472,6 @@ in {
     pylint.enable = true;
     poetry.enable = true;
     neovim.enable = true;
-    gpg.enable = false;
     ssh.enable = false;
 
     ncspot = {

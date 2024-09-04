@@ -27,34 +27,33 @@
     gvfs
     nautilus-open-any-terminal
     nautilus-open-in-blackbox
-    seahorse    
+    seahorse
     rygel
     gnome-tweaks
-    gnome-software   
+    gnome-software
     gnome-frog
     evince
     gnome-boxes
     gnome-builder
     gnome-text-editor
-    gnome-gnome-font-viewer
+    gnome-font-viewer
     gnome-dictionary
-    gnome-tour  
+    gnome-tour
     gnome-maps
     gnome-characters
     # A graphical directory tree analyzer
     baobab
     # A GNOME web browser based on the WebKit rendering engine
-    epiphany
+    # epiphany
     # User documentation for GNOME
-    gnome-user-docs    
+    gnome-user-docs
     # Easy to use user-level file sharing for GNOME
     gnome-user-share
     # Movie player for the GNOME desktop based on GStreamer
     totem
     # Filesystem indexer and metadata extractor
     tracker-miners
-    ];
-
+  ];
 
   dconf.settings = {
     "org/gnome/mutter" = {

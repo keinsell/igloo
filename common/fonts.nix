@@ -4,7 +4,6 @@
   # https://github.com/molarmanful/eldur
   # https://github.com/javierbyte/brutalita
   # ---
-  #
   home.packages = with pkgs; [
     noto-fonts
     noto-fonts-emoji
