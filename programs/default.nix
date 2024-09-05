@@ -5,5 +5,6 @@
     ./nixpkgs.nix
     ./nix.nix
     ./gpg
+    ./atuin
   ];
 }

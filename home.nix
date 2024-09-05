@@ -296,19 +296,7 @@ in {
     urxvt.enable = true;
     watson.enable = true;
     rofi.enable = true;
-    # nushell = {
-    #   enable = true;
-    #   package = pkgs.nushellFull;
-    #   configFile.source = ./modules/nushell/config.nu;
-    #   envFile.source = ./modules/nushell/env.nu;
-    #   shellAliases = { };
 
-    #   extraConfig = ''
-    #     source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu
-    #     source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/cargo/cargo-completions.nu
-    #     source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/zellij/zellij-completions.nu
-    #   '';
-    # };
     bash = {
       enable = false;
       enableVteIntegration = true;
@@ -441,7 +429,6 @@ in {
       enableInstantMode = true;
     };
 
-    atuin.enable = true;
     skim.enable = true;
     keychain.enable = true;
     gh.enable = true;
