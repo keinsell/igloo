@@ -260,6 +260,7 @@ in {
       pkgs.openssl
       pkgs.rclone
       pkgs.blackbox-terminal
+      pkgs.protonvpn-cli_2
     ];
 
     sessionVariables = {
