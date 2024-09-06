@@ -1,12 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    gnome.zenity
-    gnome.sushi
-    gnome.seahorse
-    gnome.rygel
-    gnome.gnome-tweaks
-    gnome.gnome-software
-    gnome.gnome-shell-extensions
+    zenity
+    sushi
+    seahorse
+    rygel
+    gnome-tweaks
+    gnome-software
+    gnome-shell-extensions
     gnome-extension-manager
     gnomeExtensions.forge
     gnome-extensions-cli
