@@ -279,11 +279,16 @@ in {
       "$HOME/.cargo/bin"
     ];
 
+    shellAliases = {
+      mux = "zellij";
+    };
+
     extraOutputsToInstall = [
       "doc"
       "info"
       "devdoc"
     ];
+    
     preferXdgDirectories = true;
   };
 
