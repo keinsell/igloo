@@ -288,7 +288,7 @@ in {
       "info"
       "devdoc"
     ];
-    
+
     preferXdgDirectories = true;
   };
 

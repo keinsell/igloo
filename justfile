@@ -19,6 +19,9 @@ update:
 lint:
   nix fmt
 
+format:
+  alejandra .
+
 # Check nix flake
 check:
   nix flake check
