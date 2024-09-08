@@ -54,6 +54,10 @@
     tracker-miners
   ];
 
+  programs = {
+    gnome-shell.enable = true;
+  };
+
   dconf.settings = {
     "org/gnome/mutter" = {
       experimental-features = [

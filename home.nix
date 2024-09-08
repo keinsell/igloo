@@ -14,10 +14,10 @@ in {
     (sources.catppuccin + "/modules/home-manager")
     # (sources.stylix).homeManagerModules.stylix
     ./modules/common/default.nix
-    ./desktop_environment
+    # ./desktop_environment
     ./modal-editor
     ./shell
-    ./web-browser
+    # ./web-browser
     ./programs
   ];
 
@@ -460,10 +460,6 @@ in {
     };
 
     nix-index.enable = true;
-
-    gnome-shell = {
-      enable = true;
-    };
 
     ripgrep.enable = true;
     bacon.enable = true;
