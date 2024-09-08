@@ -1,15 +1,16 @@
 # Reference
 # https://mynixos.com/
 # https://searchix.alanpearce.eu/
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config
+, pkgs
+, ...
+}:
+let
   sources = import ./npins;
   # isDarwin = pkgs.stdenv.isDarwin;
   # isLinux = pkgs.stdenv.isLinux;
-in {
+in
+{
   imports = [
     (sources.catppuccin + "/modules/home-manager")
     # (sources.stylix).homeManagerModules.stylix
@@ -72,71 +73,71 @@ in {
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "24.05";
 
-    file = {};
+    file = { };
     packages = [
       # System
-      pkgs.zstd
-      pkgs.xsel
-      pkgs.xclip
-      pkgs.lsof
-      pkgs.npins
-      pkgs.zk
-      pkgs.nb
-      pkgs.unar
-      pkgs.inshellisense
-      pkgs.jq
-      pkgs.poppler
-      pkgs.fd
-      pkgs.fzf
-      pkgs.mods
-      pkgs.gum
-      pkgs.glow
-      pkgs.wluma
-      pkgs._1password
-      pkgs._1password-gui-beta
-      pkgs.nh
-      pkgs.manix
-      pkgs.nil
-      pkgs.niv
-      pkgs.nixci
-      pkgs.nixd
-      pkgs.nixel
-      pkgs.nixpacks
-      pkgs.gleam
-      pkgs.yaml-language-server
-      pkgs.vdhcoapp
-      pkgs.aria2
-      pkgs.persepolis
-      pkgs.varia
-      pkgs.ariang
-      pkgs.ccache
-      pkgs.axel
-      pkgs.gcc
-      pkgs.automake
-      pkgs.pkgconf
+      # pkgs.zstd
+      # pkgs.xsel
+      # pkgs.xclip
+      # pkgs.lsof
+      # pkgs.npins
+      # pkgs.zk
+      # pkgs.nb
+      # pkgs.unar
+      # pkgs.inshellisense
+      # pkgs.jq
+      # pkgs.poppler
+      # pkgs.fd
+      # pkgs.fzf
+      # pkgs.mods
+      # pkgs.gum
+      # pkgs.glow
+      # pkgs.wluma
+      # pkgs._1password
+      # pkgs._1password-gui-beta
+      # pkgs.nh
+      # pkgs.manix
+      # pkgs.nil
+      # pkgs.niv
+      # pkgs.nixci
+      # pkgs.nixd
+      # pkgs.nixel
+      # pkgs.nixpacks
+      # pkgs.gleam
+      # pkgs.yaml-language-server
+      # pkgs.vdhcoapp
+      # pkgs.aria2
+      # pkgs.persepolis
+      # pkgs.varia
+      # pkgs.ariang
+      # pkgs.ccache
+      # pkgs.axel
+      # pkgs.gcc
+      # pkgs.automake
+      # pkgs.pkgconf
 
       # Development Environemnt
-      pkgs.daytona-bin
-      pkgs.devenv
+      # pkgs.daytona-bin
+      # pkgs.devenv
       pkgs.deadnix
       pkgs.statix
       pkgs.comma
       pkgs.alejandra
 
       # Runtimes and Libraries
-      pkgs.go
+      # pkgs.go
 
       # ---------
       # Rust
       # ---------
-      pkgs.rustup
-      pkgs.rustfilt
+      # pkgs.rustup
+      # pkgs.rustfilt
 
       # ---------
       # Zig
       # ---------
-      pkgs.zls
-      pkgs.zig
+      # pkgs.zls
+      # pkgs.zig
 
       # ---------
       # Java
@@ -145,58 +146,58 @@ in {
       # ---------
       # Kotlin
       # ---------
-      pkgs.kotlin
-      pkgs.kotlin-native
-      pkgs.kotlin-language-server
-      pkgs.detekt
-      pkgs.ktfmt
-      pkgs.ktlint
+      # pkgs.kotlin
+      # pkgs.kotlin-native
+      # pkgs.kotlin-language-server
+      # pkgs.detekt
+      # pkgs.ktfmt
+      # pkgs.ktlint
 
       ## Node.js
-      pkgs.nodejs
-      pkgs.typescript-language-server
-      pkgs.pnpm
-      pkgs.yarn
-      pkgs.bun
-      pkgs.deno
-      pkgs.typescript
-      pkgs.assemblyscript
-      pkgs.nodePackages.tsun
-      pkgs.nodePackages.ts-node
-      # pkgs.nodePackages.prisma
-      pkgs.turbo
-      pkgs.rslint
-      pkgs.oxlint
-      pkgs.ezno
-      # pkgs.edge-runtime
-      pkgs.tyson
-      pkgs.esbuild
-      pkgs.nerdctl
-      pkgs.docker
-      pkgs.docker-compose
-      pkgs.docker-buildx
-      pkgs.docker-sync
-      pkgs.lazydocker
-      pkgs.dapper
-      pkgs.cadvisor
-      pkgs.docui
-      pkgs.dive
-      pkgs.diffoci
-      pkgs.rootlesskit
-      pkgs.kind
-      pkgs.kompose
-      pkgs.containerd
-      pkgs.dockerfile-language-server-nodejs
-      pkgs.conmon
-      pkgs.gvisor
-      pkgs.earthly
-      pkgs.jetbrains-toolbox
-      pkgs.jetbrains.idea-ultimate
-      pkgs.vesktop
-      pkgs.spot
-      pkgs.psst
-      pkgs.bcachefs-tools
-      pkgs.tailscale
+      # pkgs.nodejs
+      # pkgs.typescript-language-server
+      # pkgs.pnpm
+      # pkgs.yarn
+      # pkgs.bun
+      # pkgs.deno
+      # pkgs.typescript
+      # pkgs.assemblyscript
+      # pkgs.nodePackages.tsun
+      # pkgs.nodePackages.ts-node
+      # # pkgs.nodePackages.prisma
+      # pkgs.turbo
+      # pkgs.rslint
+      # pkgs.oxlint
+      # pkgs.ezno
+      # # pkgs.edge-runtime
+      # pkgs.tyson
+      # pkgs.esbuild
+      # pkgs.nerdctl
+      # pkgs.docker
+      # pkgs.docker-compose
+      # pkgs.docker-buildx
+      # pkgs.docker-sync
+      # pkgs.lazydocker
+      # pkgs.dapper
+      # pkgs.cadvisor
+      # pkgs.docui
+      # pkgs.dive
+      # pkgs.diffoci
+      # pkgs.rootlesskit
+      # pkgs.kind
+      # pkgs.kompose
+      # pkgs.containerd
+      # pkgs.dockerfile-language-server-nodejs
+      # pkgs.conmon
+      # pkgs.gvisor
+      # pkgs.earthly
+      # pkgs.jetbrains-toolbox
+      # pkgs.jetbrains.idea-ultimate
+      # pkgs.vesktop
+      # pkgs.spot
+      # pkgs.psst
+      # pkgs.bcachefs-tools
+      # pkgs.tailscale
 
       # NetworkManager
       # pkgs.gnome.networkmanager-vpnc
@@ -206,38 +207,38 @@ in {
       # pkgs.gnomeExtensions.tailscale-qs
       # pkgs.gnomeExtensions.wireguard-indicator
 
-      pkgs.gitmoji-cli
-      pkgs.lunarvim
-      pkgs.tokei
-      pkgs.scc
-      pkgs.gitstats
-      pkgs.git-town
-      pkgs.git-annex
-      pkgs.gitfs
-      pkgs.git-cliff
-      pkgs.git-codeowners
-      pkgs.gitleaks
-      pkgs.gitless
-      pkgs.jrnl
-      pkgs.gitu
-      pkgs.difftastic
-      pkgs.git-credential-manager
-      pkgs.meld
-      pkgs.resources
-      pkgs.gnome-calendar
-      pkgs.gnome-keysign
-      pkgs.cockpit
-      pkgs.papirus-icon-theme
-      pkgs.papirus-folders
-      pkgs.folder-color-switcher
-      pkgs.flatpak
+      # pkgs.gitmoji-cli
+      # pkgs.lunarvim
+      # pkgs.tokei
+      # pkgs.scc
+      # pkgs.gitstats
+      # pkgs.git-town
+      # pkgs.git-annex
+      # pkgs.gitfs
+      # pkgs.git-cliff
+      # pkgs.git-codeowners
+      # pkgs.gitleaks
+      # pkgs.gitless
+      # pkgs.jrnl
+      # pkgs.gitu
+      # pkgs.difftastic
+      # pkgs.git-credential-manager
+      # pkgs.meld
+      # pkgs.resources
+      # pkgs.gnome-calendar
+      # pkgs.gnome-keysign
+      # pkgs.cockpit
+      # pkgs.papirus-icon-theme
+      # pkgs.papirus-folders
+      # pkgs.folder-color-switcher
+      # pkgs.flatpak
       # pkgs.buku
       # pkgs.bukubrow
       # pkgs.oil-buku
-      pkgs.packer
-      pkgs.codeowners
-      pkgs.nu_scripts
-      pkgs.slint-lsp
+      # pkgs.packer
+      # pkgs.codeowners
+      # pkgs.nu_scripts
+      # pkgs.slint-lsp
 
       # TODO: Research database tools
       # https://github.com/pasqui23/nixpkgs/tree/5924e231b7bad42a56c2bcf0909ef163e246fac9/pkgs/development/tools/database
@@ -338,7 +339,7 @@ in {
     };
     zoxide = {
       enable = true;
-      options = ["--cmd cd"];
+      options = [ "--cmd cd" ];
     };
     feh.enable = true;
     fastfetch = {
