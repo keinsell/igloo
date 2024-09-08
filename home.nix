@@ -421,13 +421,6 @@ in
 
     tealdeer.enable = true;
     navi.enable = true;
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      silent = true;
-    };
-
     dircolors.enable = true;
 
     thefuck = {

@@ -6,5 +6,6 @@
     ./nix.nix
     ./gpg
     ./atuin
+    ./direnv
   ];
 }
