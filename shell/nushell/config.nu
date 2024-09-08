@@ -26,6 +26,6 @@ source ~/.cache/atuin/init.nu
 source ~/.cache/oh-my-posh/init.nu
 
 # ---------------- inshellisense shell plugin ----------------
-# if "ISTERM" not-in $env and $nu.is-interactive {
-#     if $nu.is-login { is -s nu --login ; exit } else { is -s nu ; exit }
-# }
+if "ISTERM" not-in $env and $nu.is-interactive {
+    if $nu.is-login { is -s nu --login ; exit } else { is -s nu ; exit }
+}
