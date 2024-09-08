@@ -13,8 +13,8 @@ in {
   imports = [
     (sources.catppuccin + "/modules/home-manager")
     # (sources.stylix).homeManagerModules.stylix
-    ./modules/common/default.nix
     # ./desktop_environment
+    ./fonts
     ./modal-editor
     ./shell
     # ./web-browser
