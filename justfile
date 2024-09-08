@@ -41,3 +41,6 @@ clean:
 # Run nix flake to setup environment
 run: lint check
   nix run
+
+switch:
+	home-manager switch --flake .

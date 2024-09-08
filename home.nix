@@ -118,7 +118,7 @@ in
 
       # Development Environemnt
       # pkgs.daytona-bin
-      # pkgs.devenv
+      pkgs.devenv
       pkgs.deadnix
       pkgs.statix
       pkgs.comma

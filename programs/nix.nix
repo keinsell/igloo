@@ -1,9 +1,10 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
+  home.packages = with pkgs; [ nh ];
+
   nix = {
     package = pkgs.lix;
     gc.automatic = true;
@@ -28,7 +29,7 @@
   };
 
   services =
-    {}
+    { }
     // lib.attrsets.optionalAttrs (builtins.hasAttr "nix-daemon" config.services) {
       nix-daemon.enable = true;
     };
