@@ -1,16 +1,15 @@
 # Reference
 # https://mynixos.com/
 # https://searchix.alanpearce.eu/
-{ config
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   sources = import ./npins;
   # isDarwin = pkgs.stdenv.isDarwin;
   # isLinux = pkgs.stdenv.isLinux;
-in
-{
+in {
   imports = [
     (sources.catppuccin + "/modules/home-manager")
     # (sources.stylix).homeManagerModules.stylix
@@ -73,7 +72,7 @@ in
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "24.05";
 
-    file = { };
+    file = {};
     packages = [
       # System
       # pkgs.zstd
@@ -339,7 +338,7 @@ in
     };
     zoxide = {
       enable = true;
-      options = [ "--cmd cd" ];
+      options = ["--cmd cd"];
     };
     feh.enable = true;
     fastfetch = {

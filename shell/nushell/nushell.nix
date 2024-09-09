@@ -1,8 +1,9 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
-  home.packages = with pkgs; [ macchina freshfetch inshellisense ];
+  home.packages = with pkgs; [macchina freshfetch inshellisense];
 
   programs = {
     nushell = {
