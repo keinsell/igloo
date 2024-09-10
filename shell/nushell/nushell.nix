@@ -1,9 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
-  home.packages = with pkgs; [macchina freshfetch inshellisense];
+  home.packages = with pkgs; [ macchina freshfetch inshellisense pueue ];
 
   programs = {
     nushell = {
@@ -17,6 +16,8 @@
         source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu
         source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/cargo/cargo-completions.nu
         source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/zellij/zellij-completions.nu
+
+        use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/task.nu
       '';
     };
 
