@@ -273,6 +273,8 @@ in
       PNPM_HOME = "/home/keinsell/.cache/pnpm";
       COREPACK_HOME = "/home/keinsell/.cache/corepack";
       PAGER = "${pkgs.glow}/bin/glow";
+      ZELLIJ_AUTO_ATTACH = "true";
+      ZELLIJ_AUTO_EXIT = "true";
     };
 
     sessionPath = [

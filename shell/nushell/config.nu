@@ -29,3 +29,20 @@ source ~/.cache/oh-my-posh/init.nu
 # if "ISTERM" not-in $env and $nu.is-interactive {
     # if $nu.is-login { is -s nu --login ; exit } else { is -s nu ; exit }
 # }
+
+
+# ---------------- zellij auto-activation --------------------
+def start_zellij [] {
+  if 'ZELLIJ' not-in ($env | columns) {
+    if 'ZELLIJ_AUTO_ATTACH' in ($env | columns) and $env.ZELLIJ_AUTO_ATTACH == 'true' {
+      zellij attach -c
+    } else {
+      zellij
+    }
+
+    if 'ZELLIJ_AUTO_EXIT' in ($env | columns) and $env.ZELLIJ_AUTO_EXIT == 'true' {
+      exit
+    }
+  }
+}
+start_zellij
