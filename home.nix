@@ -21,6 +21,7 @@ in
     ./terminal-multiplexer
     # ./web-browser
     ./programs
+    ./music-player
   ];
 
   # Enable settings that make Home Manager work better on
