@@ -19,7 +19,7 @@
   };
   # https://github.com/NixOS/nixpkgs/issues/35464
   services.gpg-agent = {
-    enable = true;
+    enable = false;
     defaultCacheTtl = 1209600;
     defaultCacheTtlSsh = 1209600;
     maxCacheTtl = 1209600;
