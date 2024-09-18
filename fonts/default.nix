@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # There is a one cool bitmap font called "eldur" however,
   # i could not find package with it.
   # https://github.com/molarmanful/eldur
@@ -48,6 +48,7 @@
     monaspace
     _3270font
     _0xproto
+    departure-mono
 
     dejavu_fonts
     powerline-fonts
