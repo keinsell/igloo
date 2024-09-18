@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       gui = {
-        lightTheme = false;
+        lightTheme = true;
         nerdFontsVersion = "";
         filterMode = "fuzzy";
       };
@@ -11,7 +11,7 @@
         paging = {
           colorArg = "always";
           useConfig = false;
-          externalDiffCommand = "difft --color=always";
+          pager = "diff-so-fancy";
         };
       };
     };

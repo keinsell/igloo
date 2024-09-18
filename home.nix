@@ -77,6 +77,7 @@ in
 
     file = { };
     packages = [
+      pkgs.diff-so-fancy
       # System
       # pkgs.zstd
       # pkgs.xsel
