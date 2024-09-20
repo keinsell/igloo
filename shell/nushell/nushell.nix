@@ -1,8 +1,16 @@
-{ config
-, pkgs
-, ...
-}: {
-  home.packages = with pkgs; [ macchina freshfetch inshellisense pueue ];
+{
+  config,
+  pkgs,
+  ...
+}:
+{
+  home.packages = with pkgs; [
+    macchina
+    freshfetch
+    inshellisense
+    pueue
+    jc
+  ];
 
   programs = {
     nushell = {
@@ -22,6 +30,7 @@
        	source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/just/just-completions.nu
 
         use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/task.nu
+        use ${pkgs.nu_scripts}/share/nu_scripts/modules/system *
       '';
     };
 

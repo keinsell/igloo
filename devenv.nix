@@ -1,9 +1,13 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # https://devenv.sh/basics/
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = with pkgs; [git lefthook];
+  packages = with pkgs; [
+    git
+    lefthook
+  ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;

@@ -3,8 +3,12 @@
   lib,
   pkgs,
   ...
-}: {
-  home.packages = with pkgs; [nh];
+}:
+{
+  home.packages = with pkgs; [
+    nh
+    comma
+  ];
 
   nix = {
     package = pkgs.lix;
@@ -15,7 +19,7 @@
         "nix-command"
         "flakes"
       ];
-      warn-dirty = true;
+      warn-dirty = false;
       sandbox = true;
       system-features = [
         "kvm"
@@ -30,8 +34,15 @@
   };
 
   services =
-    {}
+    { }
     // lib.attrsets.optionalAttrs (builtins.hasAttr "nix-daemon" config.services) {
       nix-daemon.enable = true;
     };
+
+  programs = {
+    nix-index.enable = true;
+    nix-index.enableBashIntegration = false;
+    nix-index.enableZshIntegration = false;
+    command-not-found.enable = true;
+  };
 }

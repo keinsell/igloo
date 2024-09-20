@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     git-cache
     git-absorb
@@ -11,6 +12,14 @@
     git-town
     git-extras
     git-fame
+    gitstats
+    git-town
+    git-annex
+    gitfs
+    git-cliff
+    git-codeowners
+    gitleaks
+    gitless
   ];
 
   programs = {

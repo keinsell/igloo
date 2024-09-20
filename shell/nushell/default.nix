@@ -1,3 +1,3 @@
 {
-  imports = [./nushell.nix];
+  imports = [ ./nushell.nix ];
 }

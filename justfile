@@ -43,4 +43,4 @@ run: lint check
   nix run
 
 switch:
-	home-manager switch --flake .
+  nh home switch .

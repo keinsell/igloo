@@ -1,15 +1,16 @@
 # Reference
 # https://mynixos.com/
 # https://searchix.alanpearce.eu/
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }:
 let
   sources = import ./npins;
-  # isDarwin = pkgs.stdenv.isDarwin;
-  # isLinux = pkgs.stdenv.isLinux;
 in
+# isDarwin = pkgs.stdenv.isDarwin;
+# isLinux = pkgs.stdenv.isLinux;
 {
   imports = [
     (sources.catppuccin + "/modules/home-manager")
@@ -82,7 +83,6 @@ in
       # pkgs.xsel
       # pkgs.xclip
       # pkgs.lsof
-      # pkgs.npins
       # pkgs.zk
       # pkgs.nb
       # pkgs.unar
@@ -97,14 +97,7 @@ in
       # pkgs.wluma
       # pkgs._1password
       # pkgs._1password-gui-beta
-      # pkgs.nh
-      # pkgs.manix
-      # pkgs.nil
-      # pkgs.niv
-      # pkgs.nixci
-      # pkgs.nixd
-      # pkgs.nixel
-      # pkgs.nixpacks
+
       # pkgs.gleam
       # pkgs.yaml-language-server
       # pkgs.vdhcoapp
@@ -125,6 +118,15 @@ in
       pkgs.statix
       pkgs.comma
       pkgs.alejandra
+      pkgs.nh
+      pkgs.manix
+      pkgs.nil
+      pkgs.niv
+      pkgs.nixci
+      pkgs.nixd
+      pkgs.nixel
+      pkgs.nixpacks
+      pkgs.npins
 
       # Runtimes and Libraries
       # pkgs.go
@@ -213,14 +215,6 @@ in
       # pkgs.lunarvim
       # pkgs.tokei
       # pkgs.scc
-      # pkgs.gitstats
-      # pkgs.git-town
-      # pkgs.git-annex
-      # pkgs.gitfs
-      # pkgs.git-cliff
-      # pkgs.git-codeowners
-      # pkgs.gitleaks
-      # pkgs.gitless
       # pkgs.jrnl
       # pkgs.gitu
       # pkgs.difftastic
@@ -412,6 +406,7 @@ in
     thefuck = {
       enable = true;
       enableInstantMode = true;
+      enableNushellIntegration = true;
     };
 
     skim.enable = true;
@@ -498,7 +493,7 @@ in
     };
 
     lorri = {
-      enable = false;
+      enable = true;
     };
 
     mako = {
@@ -544,12 +539,6 @@ in
   };
 
   xsession.enable = true;
-
-  fonts = {
-    fontconfig = {
-      enable = true;
-    };
-  };
 
   editorconfig = {
     enable = true;
