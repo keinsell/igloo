@@ -2,16 +2,17 @@
   programs.lazygit = {
     enable = true;
     settings = {
+      update.method = "never";
       gui = {
-        lightTheme = true;
-        nerdFontsVersion = "";
+        nerdFontsVersion = 3;
+        lightTheme = false;
         filterMode = "fuzzy";
       };
       git = {
         paging = {
           colorArg = "always";
           useConfig = false;
-          pager = "diff-so-fancy";
+          externalDiffCommand = "difft --color=always";
         };
       };
     };

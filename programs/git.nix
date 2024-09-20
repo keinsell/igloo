@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     git-cache
     git-absorb
@@ -32,6 +32,12 @@
       };
 
       iniContent = {
+        # Performance optimalization with
+        # usage of fsmonitor which do not seem
+        # to be enabled by default.
+        # https://github.blog/engineering/infrastructure/improve-git-monorepo-performance-with-a-file-system-monitor/
+        core.untrackedCache = true;
+        core.fsmonitor = "${pkgs.rs-git-fsmonitor}/bin/rs-git-fsmonitor";
         branch.sort = "-committerdate";
         rerere.enabled = true;
         push.autoSetupRemote = true;
@@ -61,6 +67,8 @@
 
       difftastic = {
         enable = true;
+        background = "dark";
+        display = "inline";
       };
 
       extraConfig = {
@@ -69,7 +77,14 @@
         merge = {
           conflictstyle = "diff3";
           autoStash = true;
+          autoSquash = true;
           guitool = "meld";
+        };
+
+        push = {
+          default = "current";
+          autoSetupRemote = true;
+          followTags = true;
         };
 
         mergetool = {
@@ -77,9 +92,10 @@
           keepBackup = true;
         };
 
-        interactive = {};
+        interactive = { };
 
         diff = {
+          tool = "difftastic";
           algorithm = "histogram";
           colorMoved = "default";
         };
@@ -91,6 +107,7 @@
         };
 
         core.editor = "helix";
+
         protocol.keybase.allow = "always";
 
         pull = {
@@ -98,7 +115,7 @@
           rebase = true;
         };
 
-        pack = {};
+        pack = { };
 
         rerere = {
           autoUpdate = true;
