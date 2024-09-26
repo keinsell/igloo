@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   helixConfigurationFile = builtins.fromTOML (builtins.readFile ./config.toml);
   helixLanguagesFile = builtins.fromTOML (builtins.readFile ./languages.toml);
-in
-{
+in {
   programs.helix = {
     enable = true;
     settings = helixConfigurationFile;

@@ -33,44 +33,44 @@
     systems.url = "github:nix-systems/default";
   };
 
-  outputs =
-    inputs@{ self, ... }:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs @ {self, ...}:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import inputs.systems;
       imports = [
         inputs.nixos-flake.flakeModule
       ];
 
-      perSystem =
-        {
-          self',
-          pkgs,
-          ...
-        }:
-        let
-          # TODO: Expose this as configuration
-          username = "keinsell";
-        in
+      perSystem = {
+        self',
+        pkgs,
+        ...
+      }: let
+        # TODO: Expose this as configuration
+        username = "keinsell";
+      in
         # TODO: Email, Real Name
         {
           legacyPackages.homeConfigurations.${username} =
             inputs.self.nixos-flake.lib.mkHomeConfiguration pkgs
-              (
-                { pkgs, ... }:
-                {
-                  # Edit the contents of the ./home directory to install packages and modify dotfile configuration in your
-                  # $HOME.
-                  #
-                  # https://nix-community.github.io/home-manager/index.html#sec-usage-configuration
-                  imports = [ self.homeModules.default ];
+            (
+              {pkgs, ...}: {
+                # Edit the contents of the ./home directory to install packages and modify dotfile configuration in your
+                # $HOME.
+                #
+                # https://nix-community.github.io/home-manager/index.html#sec-usage-configuration
+                imports = [self.homeModules.default];
 
-                  home = {
-                    inherit username;
-                    homeDirectory = "/${if pkgs.stdenv.isDarwin then "Users" else "home"}/${username}";
-                    stateVersion = "24.05";
-                  };
-                }
-              );
+                home = {
+                  inherit username;
+                  homeDirectory = "/${
+                    if pkgs.stdenv.isDarwin
+                    then "Users"
+                    else "home"
+                  }/${username}";
+                  stateVersion = "24.05";
+                };
+              }
+            );
 
           formatter = pkgs.nixfmt-rfc-style;
 
@@ -83,16 +83,14 @@
 
           devShells.default = pkgs.mkShell {
             name = "nds";
-            nativeBuildInputs = with pkgs; [ just ];
+            nativeBuildInputs = with pkgs; [just];
           };
         };
 
       flake = {
-        homeModules.default =
-          { ... }:
-          {
-            imports = [ ./home.nix ];
-          };
+        homeModules.default = {...}: {
+          imports = [./home.nix];
+        };
       };
     };
 }

@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     macchina
     freshfetch
@@ -27,20 +26,21 @@
         source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/docker/docker-completions.nu
         source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/eza/eza-completions.nu
         source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/glow/glow-completions.nu
-       	source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/just/just-completions.nu
+        source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/just/just-completions.nu
 
         use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/task.nu
         use ${pkgs.nu_scripts}/share/nu_scripts/modules/system *
+
+        # https://github.com/nushell/nu_scripts/tree/main/themes
+        use ${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/catppuccin-mocha.nu
       '';
     };
 
     oh-my-posh.enable = true;
-    oh-my-posh.useTheme = "catppuccin_mocha";
+    oh-my-posh.useTheme = "uew";
+    carapace.enable = true;
   };
 
   home.file = {
-    "$HOME/.cache/oh-my-posh/prompt.json".source = ./prompt.json;
   };
-
-  # programs.oh-my-posh.settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${pkgs.oh-my-posh}/share/oh-my-posh/themes/space.omp.json"))
 }

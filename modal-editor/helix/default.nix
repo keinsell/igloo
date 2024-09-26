@@ -1,3 +1,3 @@
 {
-  imports = [ ./helix.nix ];
+  imports = [./helix.nix];
 }

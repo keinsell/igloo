@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # https://devenv.sh/basics/
   env.GREET = "devenv";
 

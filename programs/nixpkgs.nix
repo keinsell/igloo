@@ -1,10 +1,8 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   nixpkgs = {
     config = {
       allowUnfree = true;
-      allowUnfreePredicate =
-        pkg:
+      allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "joypixels"
         ];

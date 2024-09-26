@@ -1,10 +1,9 @@
 let
   keinsell = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL0idNvgGiucWgup/mP78zyC23uFjYq0evcWdjGQUaBH";
-  users = [ keinsell ];
+  users = [keinsell];
   luminar = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwdArHxYfGBy4uViFIPXqgMLsvnXVw/QNSi4hihQOLK";
-  systems = [ luminar ];
-in
-{
+  systems = [luminar];
+in {
   "secret1.age".publicKeys = [
     keinsell
     luminar

@@ -24,10 +24,11 @@ source ~/.cache/zoxide/init.nu
 source ~/.cache/broot/init.nu
 source ~/.cache/atuin/init.nu
 source ~/.cache/oh-my-posh/init.nu
+source ~/.cache/carapace/init.nu
 
 # ---------------- inshellisense shell plugin ----------------
 # if "ISTERM" not-in $env and $nu.is-interactive {
-    # if $nu.is-login { is -s nu --login ; exit } else { is -s nu ; exit }
+#     if $nu.is-login { is -s nu --login ; exit } else { is -s nu ; exit }
 # }
 
 
