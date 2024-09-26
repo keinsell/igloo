@@ -1,6 +1,7 @@
 let
   config = builtins.fromTOML (builtins.readFile ./direnv.toml);
-in {
+in
+{
   programs.direnv = {
     enable = true;
     silent = true;

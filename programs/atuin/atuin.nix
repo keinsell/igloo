@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   atuinConfig = builtins.fromTOML (builtins.readFile ./config.toml);
-in {
+in
+{
   programs.atuin = {
     enable = true;
     settings = atuinConfig;

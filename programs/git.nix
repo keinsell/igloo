@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     git-cache
     git-absorb
@@ -100,7 +101,7 @@
           keepBackup = true;
         };
 
-        interactive = {};
+        interactive = { };
 
         diff = {
           tool = "difftastic";
@@ -123,7 +124,7 @@
           rebase = true;
         };
 
-        pack = {};
+        pack = { };
 
         rerere = {
           autoUpdate = true;

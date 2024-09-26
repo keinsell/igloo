@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     macchina
     freshfetch
@@ -41,6 +42,7 @@
     carapace.enable = true;
   };
 
-  home.file = {
-  };
+  home.file =
+    {
+    };
 }

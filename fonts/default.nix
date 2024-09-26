@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # There is a one cool bitmap font called "eldur" however,
   # i could not find package with it.
   # https://github.com/molarmanful/eldur

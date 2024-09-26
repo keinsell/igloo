@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
-    turtle
+    # turtle
     sushi
     nautilus-open-any-terminal
     nautilus

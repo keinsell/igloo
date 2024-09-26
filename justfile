@@ -4,7 +4,7 @@
 
 # Default command when 'just' is run without arguments
 default:
-  @just lint format switch
+  @just switch
 
 # Print nix flake inputs and outputs
 io:
