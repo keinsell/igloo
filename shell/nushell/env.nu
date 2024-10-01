@@ -40,23 +40,15 @@ $env.PATH = (
     | prepend '/Applications/Docker.app/Contents/Resources/bin/'
 )
 
-
-
-
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 $env.EDITOR = "helix"
 
+# Generate and save initalization hooks
 mkdir ~/.cache/zoxide
 zoxide init nushell | save -f ~/.cache/zoxide/init.nu
 
 mkdir ~/.cache/broot
 broot --print-shell-function nushell | save -f ~/.cache/broot/init.nu
-
-mkdir ~/.cache/autin
-atuin init nu | save -f ~/.cache/atuin/init.nu
-
-mkdir ~/.cache/oh-my-posh
-oh-my-posh init nu --config ~/.cache/oh-my-posh/prompt.json --print | save ~/.cache/oh-my-posh/init.nu --force
 
 mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu

@@ -38,7 +38,7 @@
     };
 
     oh-my-posh.enable = true;
-    oh-my-posh.useTheme = "uew";
+    oh-my-posh.useTheme = "stelbent.minimal";
     carapace.enable = true;
   };
 
