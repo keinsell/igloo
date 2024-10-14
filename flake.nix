@@ -7,6 +7,7 @@
     # Principle inputs (updated by `nix run .#update`)
     # TODO: Add documentation about nixpkgs input
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";    
     # TODO: Add documentation about home manager input
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -39,7 +40,7 @@
       systems = import inputs.systems;
       imports = [
         inputs.nixos-flake.flakeModule
-      ];
+            ];
 
       perSystem =
         {
@@ -62,7 +63,7 @@
                   # $HOME.
                   #
                   # https://nix-community.github.io/home-manager/index.html#sec-usage-configuration
-                  imports = [ self.homeModules.default ];
+                  imports = [ self.homeModules.default];
 
                   home = {
                     inherit username;
