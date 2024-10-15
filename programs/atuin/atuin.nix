@@ -11,6 +11,6 @@ in
   programs.atuin = {
     enable = true;
     settings = atuinConfig;
-    enableNushellIntegration = false;
+    enableNushellIntegration = true;
   };
 }
