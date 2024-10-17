@@ -288,7 +288,7 @@ in
 
     shellAliases = {
       mux = "zellij";
-      docker = "nerdctl";
+      # docker = "nerdctl";
     };
 
     extraOutputsToInstall = [

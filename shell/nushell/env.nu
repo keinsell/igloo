@@ -35,6 +35,7 @@ $env.NU_PLUGIN_DIRS = [
 $env.PATH = (
     $env.PATH
     | split row (char esep)
+    | prepend $"/home/($env.USER)/.local/bin"
     | prepend $"/etc/profiles/per-user/($env.USER)/bin"
     | prepend '/run/current-system/sw/bin/'
     | prepend '/Applications/Docker.app/Contents/Resources/bin/'
