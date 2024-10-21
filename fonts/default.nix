@@ -14,6 +14,7 @@
     font-awesome
     input-fonts
     joypixels
+    departure-mono
     (nerdfonts.override {
       fonts = [
         "NerdFontsSymbolsOnly"
