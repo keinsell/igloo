@@ -1,26 +1,23 @@
-theme = "catppuccin_mocha"
-# theme = "base16_terminal"
+theme = "base16_transparent"
 
 [editor]
 auto-completion = true
 auto-format = true
 color-modes = true
-completion-replace = true
-completion-trigger-len = 2
+completion-replace = false
+completion-trigger-len = 4
 line-number = "relative"
 mouse = false
 popup-border = "all"
 true-color = true
 
+[editor.statusline]
+left = ["mode", "file-name",  "spinner", "workspace-diagnostics"]
+
 [editor.auto-save]
 focus-lost = true
 [editor.auto-save.after-delay]
 enable = true
-
-[editor.cursor-shape]
-insert = "block"
-normal = "block"
-select = "underline"
 
 [editor.file-picker]
 git-exclude = false
@@ -32,6 +29,7 @@ parents = false
 
 [editor.indent-guides]
 render = true
+skip-levels = 1
 
 [editor.lsp]
 auto-signature-help = true
@@ -42,7 +40,7 @@ snippets = true
 
 [editor.smart-tab]
 enable = true
-supersede-menu = false
+supersede-menu = true
 
 [editor.soft-wrap]
 enable = true

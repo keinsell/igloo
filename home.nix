@@ -278,7 +278,6 @@ in
       PAGER = "${pkgs.glow}/bin/glow";
       ZELLIJ_AUTO_ATTACH = "true";
       ZELLIJ_AUTO_EXIT = "true";
-      PLANDEX_ENV = "development";
     };
 
     sessionPath = [
