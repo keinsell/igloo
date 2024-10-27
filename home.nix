@@ -80,47 +80,46 @@ in
 
     # https://searchix.alanpearce.eu/packages/nixpkgs/
     packages = [
-      # pkgs.open-interpreter
-      # pkgs.python312Packages.ipykernel
       pkgs.llm
       pkgs.plandex
       pkgs.yai
       pkgs.mods
       pkgs.rclip
       pkgs.codespelunker
-      # System
-      # pkgs.zstd
-      # pkgs.xsel
-      # pkgs.xclip
-      # pkgs.lsof
-      # pkgs.zk
-      # pkgs.nb
-      # pkgs.unar
-      # pkgs.inshellisense
-      # pkgs.jq
-      # pkgs.poppler
-      # pkgs.fd
-      # pkgs.fzf
-      # pkgs.mods
-      # pkgs.gum
-      # pkgs.glow
-      # pkgs.wluma
-      # pkgs._1password
-      # pkgs._1password-gui-beta
+      pkgs.lsof
+      pkgs.zk
+      pkgs.unar
+      pkgs.inshellisense
+      pkgs.jq
+      pkgs.poppler
+      pkgs.fd
+      pkgs.fzf
+      pkgs.gum
+      pkgs.glow
+      pkgs.wluma
+      pkgs.gleam
 
-      # pkgs.gleam
-      # pkgs.yaml-language-server
-      # pkgs.vdhcoapp
-      # pkgs.aria2
-      # pkgs.persepolis
-      # pkgs.varia
-      # pkgs.ariang
-      # pkgs.ccache
-      # pkgs.axel
-      # pkgs.gcc
-      # pkgs.automake
-      # pkgs.pkgconf
+      # Download Manager
+      # ----------------
+      pkgs.vdhcoapp
+      pkgs.aria2
 
+      # Build Caching
+      # -------------
+      pkgs.sccache
+      pkgs.ccache
+
+      # Build Tools
+      # -----------
+      pkgs.gcc
+      pkgs.automake
+      pkgs.valgrind
+      pkgs.dbus
+      pkgs.pkgconf-unwrapped
+      pkgs.rustc
+      pkgs.rustc-demangle
+      pkgs.rust-jemalloc-sys
+      
       # Development Environemnt
       # pkgs.daytona-bin
       pkgs.devenv
@@ -137,29 +136,18 @@ in
       pkgs.nixel
       pkgs.nixpacks
       pkgs.npins
-
-      # Runtimes and Libraries
-      # pkgs.go
-
-      # ---------
-      # Rust
-      # ---------
-      # pkgs.rustup
-      # pkgs.rustfilt
-
-      # ---------
-      # Zig
-      # ---------
-      # pkgs.zls
-      # pkgs.zig
+      pkgs.go
+      pkgs.rust-analyzer-unwrapped
+      pkgs.rust-code-analysis
+      pkgs.rustfmt
+      pkgs.rustfilt
+      pkgs.zig
 
       # ---------
       # Java
       # ---------
       # See programs.java
-      # ---------
-      # Kotlin
-      # ---------
+
       # pkgs.kotlin
       # pkgs.kotlin-native
       # pkgs.kotlin-language-server
@@ -167,21 +155,23 @@ in
       # pkgs.ktfmt
       # pkgs.ktlint
 
-      ## Node.js
-      # pkgs.nodejs
-      # pkgs.typescript-language-server
-      # pkgs.pnpm
-      # pkgs.yarn
-      # pkgs.bun
-      # pkgs.deno
-      # pkgs.typescript
+      # Programming - Node.js
+      # ---------------------
+
+      pkgs.nodejs
+      pkgs.typescript-language-server
+      pkgs.pnpm
+      pkgs.yarn
+      pkgs.bun
+      pkgs.deno
+      pkgs.typescript
       # pkgs.assemblyscript
       # pkgs.nodePackages.tsun
       # pkgs.nodePackages.ts-node
       # # pkgs.nodePackages.prisma
-      # pkgs.turbo
-      # pkgs.rslint
-      # pkgs.oxlint
+      pkgs.turbo
+      pkgs.rslint
+      pkgs.oxlint
       # pkgs.ezno
       # # pkgs.edge-runtime
       # pkgs.tyson
@@ -204,14 +194,11 @@ in
       # pkgs.dockerfile-language-server-nodejs
       # pkgs.conmon
       # pkgs.gvisor
-      # pkgs.earthly
+      pkgs.earthly
       pkgs.jetbrains-toolbox
-      # pkgs.jetbrains.idea-ultimate
-      # pkgs.vesktop
-      # pkgs.spot
-      # pkgs.psst
-      # pkgs.bcachefs-tools
-      # pkgs.tailscale
+      pkgs.vesktop
+      pkgs.spot
+      pkgs.psst
 
       # NetworkManager
       # pkgs.gnome.networkmanager-vpnc
@@ -221,51 +208,37 @@ in
       # pkgs.gnomeExtensions.tailscale-qs
       # pkgs.gnomeExtensions.wireguard-indicator
 
-      # pkgs.gitmoji-cli
-      # pkgs.lunarvim
-      # pkgs.tokei
-      # pkgs.scc
-      # pkgs.jrnl
-      # pkgs.gitu
-      # pkgs.difftastic
-      # pkgs.git-credential-manager
-      # pkgs.meld
-      # pkgs.resources
-      # pkgs.gnome-calendar
-      # pkgs.gnome-keysign
+      pkgs.gitmoji-cli
+      pkgs.tokei
+      pkgs.scc
+      pkgs.jrnl
+      pkgs.difftastic
+      pkgs.git-credential-manager
+      pkgs.meld
+      pkgs.resources
+      pkgs.gnome-keysign
       # pkgs.cockpit
-      # pkgs.papirus-folders
-      # pkgs.folder-color-switcher
       # pkgs.flatpak
-      # pkgs.buku
-      # pkgs.bukubrow
-      # pkgs.oil-buku
-      # pkgs.packer
+      pkgs.buku
+      pkgs.packer
       # pkgs.codeowners
       # pkgs.slint-lsp
 
       # TODO: Research database tools
       # https://github.com/pasqui23/nixpkgs/tree/5924e231b7bad42a56c2bcf0909ef163e246fac9/pkgs/development/tools/database
 
-      pkgs.logseq
       pkgs.hydroxide
-      pkgs.evolution
-      pkgs.mailspring
       pkgs.cloudflared
-      # pkgs.zettlr
-
       # A stright-forward modern application to create bootable drives.
       pkgs.impression
       # Fast and secure file transfering
       pkgs.warp
-      pkgs.epiphany
       pkgs.shutter
-      # pkgs.solanum
-      # pkgs.pkg-config
-      pkgs.openssl
       pkgs.rclone
-      pkgs.blackbox-terminal
       pkgs.protonvpn-cli_2
+      pkgs.plan9port
+      pkgs.spotify-cli-linux
+      pkgs.spotifyd
     ];
 
     sessionVariables = {
@@ -273,9 +246,8 @@ in
       TERM = "xterm-256color";
       BROWSER = "firefox";
       LANG = "en_US.UTF-8";
-      PNPM_HOME = "/home/keinsell/.cache/pnpm";
+      PNPM_HOME = "/home/keinsell/.local/share/pnpm";
       COREPACK_HOME = "/home/keinsell/.cache/corepack";
-      PAGER = "${pkgs.glow}/bin/glow";
       ZELLIJ_AUTO_ATTACH = "true";
       ZELLIJ_AUTO_EXIT = "true";
     };
@@ -381,45 +353,29 @@ in
       enable = false;
     };
     broot.enable = true;
-
-    # starship = {
-    #   enable = true;
-    #   settings = {
-    #     add_newline = false;
-    #     line_break.disabled = false;
-    #   };
-    # };
-
     oh-my-posh = {
       enable = true;
     };
-
     gitui = {
       enable = true;
     };
-
     eza = {
       enable = true;
       enableZshIntegration = true;
     };
-
     fzf.enable = true;
     fzf.enableZshIntegration = true;
-
     tealdeer.enable = true;
     navi.enable = true;
     dircolors.enable = true;
-
-    thefuck = {
+   thefuck = {
       enable = true;
       enableInstantMode = true;
       enableNushellIntegration = true;
     };
-
     skim.enable = true;
     keychain.enable = true;
     gh.enable = true;
-
     texlive = {
       enable = true;
     };
