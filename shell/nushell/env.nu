@@ -44,14 +44,4 @@ $env.PATH = (
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 $env.EDITOR = "helix"
 
-# Generate and save initalization hooks
-mkdir ~/.cache/zoxide
-zoxide init nushell | save -f ~/.cache/zoxide/init.nu
-
-mkdir ~/.cache/broot
-broot --print-shell-function nushell | save -f ~/.cache/broot/init.nu
-
-mkdir ~/.cache/carapace
-carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
-
-# fastfetch
+fastfetch

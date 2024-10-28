@@ -43,4 +43,4 @@ run: lint check
   nix run
 
 switch:
-  nh home switch .
+   home-manager switch --flake . --impure --refresh

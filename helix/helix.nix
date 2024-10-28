@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-  helixConfigurationFile = builtins.fromTOML (builtins.readFile ./helix/config.toml);
-  helixLanguagesFile = builtins.fromTOML (builtins.readFile ./helix/languages.toml);
+  helixConfigurationFile = builtins.fromTOML (builtins.readFile ./config.toml);
+  helixLanguagesFile = builtins.fromTOML (builtins.readFile ./languages.toml);
 in
 {
   programs.helix = {
@@ -27,7 +27,7 @@ in
       typescript-language-server
       jsonnet-language-server
       yaml-language-server
-      rust-analyzer
+      rust-analyzer-unwrapped
       biome
       marksman
       taplo
@@ -61,16 +61,13 @@ in
       dhall-lsp-server
       ltex-ls
       hyprls
-      # llm-ls
+      llm-ls
       zls
       vale-ls
       vscode-js-debug
-      eslint_d
       vscode-langservers-extracted
-      # nodePackages.eslint
       eslint_d
       diagnostic-languageserver
-      basedpyright
       pylyzer
       pyright
     ];

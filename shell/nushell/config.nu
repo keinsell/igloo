@@ -19,10 +19,6 @@ $env.config = {
     show_banner: false,
 }
 
-source ~/.cache/zoxide/init.nu
-source ~/.cache/broot/init.nu
-source ~/.cache/carapace/init.nu
-
 # ---------------- zellij auto-activation --------------------
   if 'ZELLIJ' not-in ($env | columns) {
     if 'ZELLIJ_AUTO_ATTACH' in ($env | columns) and $env.ZELLIJ_AUTO_ATTACH == 'true' {

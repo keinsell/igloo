@@ -8,27 +8,45 @@
 }:
 let
   sources = import ./npins;
+  helixConfigurationFile = builtins.fromTOML (builtins.readFile ./helix/config.toml);
+  helixLanguagesFile = builtins.fromTOML (builtins.readFile ./helix/languages.toml);
 in
-# isDarwin = pkgs.stdenv.isDarwin;
-# isLinux = pkgs.stdenv.isLinux;
 {
   imports = [
     (sources.catppuccin + "/modules/home-manager")
-    # (sources.stylix).homeManagerModules.stylix
-    #      ./desktop_environment
     ./fonts
-    ./modal-editor
     ./shell
     ./terminal-multiplexer
-    # ./web-browser
     ./programs
-    ./music-player
   ];
 
   # Enable settings that make Home Manager work better on
   # GNU/Linux distributions other than NixOS.
-  targets.genericLinux.enable = true;
+  targets.genericLinux.enable = false;
   # stylix.enable = true;
+
+  nix = {
+    package = pkgs.lix;
+    gc.automatic = true;
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      warn-dirty = false;
+      sandbox = false;
+      system-features = [
+        "kvm"
+        "big-parallel"
+        "gccarch-skylake"
+      ];
+      trusted-users = [
+        "root"
+        "keinsell"
+      ];
+    };
+  };
 
   accounts = {
     email = {
@@ -80,6 +98,16 @@ in
 
     # https://searchix.alanpearce.eu/packages/nixpkgs/
     packages = [
+      (pkgs.python39Full.withPackages (python-pkgs: with python-pkgs; [
+            pandas
+            requests
+            setuptools
+            build
+            installer
+          ]))
+      pkgs.python-cosmopolitan
+      pkgs.python-launcher
+      pkgs.uv
       pkgs.llm
       pkgs.plandex
       pkgs.yai
@@ -119,7 +147,8 @@ in
       pkgs.rustc
       pkgs.rustc-demangle
       pkgs.rust-jemalloc-sys
-      
+      pkgs.openssl
+
       # Development Environemnt
       # pkgs.daytona-bin
       pkgs.devenv
@@ -223,22 +252,6 @@ in
       pkgs.packer
       # pkgs.codeowners
       # pkgs.slint-lsp
-
-      # TODO: Research database tools
-      # https://github.com/pasqui23/nixpkgs/tree/5924e231b7bad42a56c2bcf0909ef163e246fac9/pkgs/development/tools/database
-
-      pkgs.hydroxide
-      pkgs.cloudflared
-      # A stright-forward modern application to create bootable drives.
-      pkgs.impression
-      # Fast and secure file transfering
-      pkgs.warp
-      pkgs.shutter
-      pkgs.rclone
-      pkgs.protonvpn-cli_2
-      pkgs.plan9port
-      pkgs.spotify-cli-linux
-      pkgs.spotifyd
     ];
 
     sessionVariables = {
@@ -255,11 +268,11 @@ in
     sessionPath = [
       "$HOME/.cache/pnpm/bin"
       "$HOME/.cargo/bin"
+      "$HOME/.local/bin"
     ];
 
     shellAliases = {
       mux = "zellij";
-      # docker = "nerdctl";
     };
 
     extraOutputsToInstall = [
@@ -280,6 +293,95 @@ in
     urxvt.enable = true;
     watson.enable = true;
     rofi.enable = true;
+
+    helix = {
+      enable = true;
+      settings = helixConfigurationFile;
+      languages = helixLanguagesFile;
+
+      extraPackages = with pkgs; [
+        efm-langserver
+        statix
+        deadnix
+        bash-language-server
+        typst-live
+        texlab
+        nixpkgs-fmt
+        nil
+        ripgrep
+        zls
+        lldb
+        xsel
+        typescript
+        typescript-language-server
+        jsonnet-language-server
+        yaml-language-server
+        rust-analyzer
+        biome
+        marksman
+        taplo
+        lldb
+        sonarlint-ls
+        lsp-plugins
+        markdown-oxide
+        koka
+        prqlc
+        quickjs-ng
+        hadolint
+        javascript-typescript-langserver
+        ansible-language-server
+        bash-language-server
+        spectral-language-server
+        dockerfile-language-server-nodejs
+        nodePackages.graphql-language-service-cli
+        jq-lsp
+        terraform-lsp
+        postgres-lsp
+        htmx-lsp
+        typos-lsp
+        stylelint-lsp
+        typst-lsp
+        ruff-lsp
+        dhall-lsp-server
+        ltex-ls
+        hyprls
+        zls
+        vale-ls
+        vscode-js-debug
+        eslint_d
+        vscode-langservers-extracted
+        eslint_d
+        diagnostic-languageserver
+        pylyzer
+        pyright
+      ];
+
+      ignores = [
+        "/build/"
+        "/target/"
+        "/node_modules/"
+        "/dist/"
+      ];
+    };
+
+    lazygit = {
+      enable = true;
+      settings = {
+        update.method = "never";
+        gui = {
+          nerdFontsVersion = 3;
+          lightTheme = false;
+          filterMode = "fuzzy";
+        };
+        git = {
+          paging = {
+            colorArg = "always";
+            useConfig = false;
+            externalDiffCommand = "difft --color=always";
+          };
+        };
+      };
+    };
 
     bash = {
       enable = false;
@@ -368,7 +470,7 @@ in
     tealdeer.enable = true;
     navi.enable = true;
     dircolors.enable = true;
-   thefuck = {
+    thefuck = {
       enable = true;
       enableInstantMode = true;
       enableNushellIntegration = true;
@@ -398,7 +500,6 @@ in
     };
 
     nix-index.enable = true;
-
     ripgrep.enable = true;
     bacon.enable = true;
     pylint.enable = true;
@@ -441,19 +542,13 @@ in
 
   services = {
     home-manager = {
-      autoUpgrade.enable = true;
+      autoUpgrade.enable = false;
       autoUpgrade.frequency = "daily";
     };
 
-    kbfs = {
-      enable = true;
-    };
-
+    kbfs.enable = true;
     keybase.enable = true;
-
-    gnome-keyring = {
-      enable = true;
-    };
+    gnome-keyring.enable = true;
 
     lorri = {
       enable = true;
@@ -501,7 +596,7 @@ in
     user.startServices = "sd-switch";
   };
 
-  xsession.enable = true;
+  xsession.enable = false;
 
   editorconfig = {
     enable = true;
@@ -513,14 +608,8 @@ in
   };
 
   xdg = {
-    # mimeApps = {
-    #   enable = true;
-    #   defaultApplications = {
-    #     "ts" = [ "helix.desktop" ];
-    #   };
-    # };
     portal = {
-      enable = true;
+      enable = false;
       extraPortals = [
         pkgs.xdg-desktop-portal-gnome
         pkgs.xdg-desktop-portal-gtk

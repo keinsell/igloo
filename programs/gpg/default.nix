@@ -8,8 +8,8 @@
       mutableTrust = true;
       publicKeys = [
         # {
-          # source = ./keys/pub_fb2eca8d791435dc683d80d1402d2364da7ca536.asc;
-          # trust = "ultimate";
+        # source = ./keys/pub_fb2eca8d791435dc683d80d1402d2364da7ca536.asc;
+        # trust = "ultimate";
         # }
       ];
     };
