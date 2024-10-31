@@ -64,6 +64,7 @@
           devShells.default = pkgsWithOverlay.mkShell {
             name = "luminar";
             nativeBuildInputs = with pkgsWithOverlay; [
+            	python39Full
             ];
           };
         };

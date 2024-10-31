@@ -5,6 +5,7 @@
       monospace = [
         "Departure Mono"
         "cozette"
+        "scientifica"
         "0xProto"
         "Commit Mono"
       ];

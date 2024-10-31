@@ -22,11 +22,11 @@ in
 
   # Enable settings that make Home Manager work better on
   # GNU/Linux distributions other than NixOS.
-  targets.genericLinux.enable = false;
+  targets.genericLinux.enable = true;
   # stylix.enable = true;
 
   nix = {
-    package = pkgs.lix;
+    package = pkgs.nix;
     gc.automatic = true;
     settings = {
       auto-optimise-store = true;
@@ -34,8 +34,8 @@ in
         "nix-command"
         "flakes"
       ];
-      warn-dirty = false;
-      sandbox = false;
+      warn-dirty = true;
+      sandbox = true;
       system-features = [
         "kvm"
         "big-parallel"
@@ -98,18 +98,8 @@ in
 
     # https://searchix.alanpearce.eu/packages/nixpkgs/
     packages = [
-      (pkgs.python39Full.withPackages (python-pkgs: with python-pkgs; [
-            pandas
-            requests
-            setuptools
-            build
-            installer
-          ]))
       pkgs.python-cosmopolitan
-      pkgs.python-launcher
       pkgs.uv
-      pkgs.llm
-      pkgs.plandex
       pkgs.yai
       pkgs.mods
       pkgs.rclip
@@ -206,6 +196,8 @@ in
       # pkgs.tyson
       # pkgs.esbuild
       # pkgs.nerdctl
+      pkgs.docker-client
+      pkgs.docker-distribution
       # pkgs.docker
       # pkgs.docker-compose
       # pkgs.docker-buildx
@@ -275,12 +267,6 @@ in
       mux = "zellij";
     };
 
-    extraOutputsToInstall = [
-      "doc"
-      "info"
-      "devdoc"
-    ];
-
     preferXdgDirectories = true;
   };
 
@@ -298,64 +284,6 @@ in
       enable = true;
       settings = helixConfigurationFile;
       languages = helixLanguagesFile;
-
-      extraPackages = with pkgs; [
-        efm-langserver
-        statix
-        deadnix
-        bash-language-server
-        typst-live
-        texlab
-        nixpkgs-fmt
-        nil
-        ripgrep
-        zls
-        lldb
-        xsel
-        typescript
-        typescript-language-server
-        jsonnet-language-server
-        yaml-language-server
-        rust-analyzer
-        biome
-        marksman
-        taplo
-        lldb
-        sonarlint-ls
-        lsp-plugins
-        markdown-oxide
-        koka
-        prqlc
-        quickjs-ng
-        hadolint
-        javascript-typescript-langserver
-        ansible-language-server
-        bash-language-server
-        spectral-language-server
-        dockerfile-language-server-nodejs
-        nodePackages.graphql-language-service-cli
-        jq-lsp
-        terraform-lsp
-        postgres-lsp
-        htmx-lsp
-        typos-lsp
-        stylelint-lsp
-        typst-lsp
-        ruff-lsp
-        dhall-lsp-server
-        ltex-ls
-        hyprls
-        zls
-        vale-ls
-        vscode-js-debug
-        eslint_d
-        vscode-langservers-extracted
-        eslint_d
-        diagnostic-languageserver
-        pylyzer
-        pyright
-      ];
-
       ignores = [
         "/build/"
         "/target/"
@@ -389,7 +317,6 @@ in
     };
     zsh = {
       enable = true;
-      zsh-abbr.enable = true;
       autosuggestion.enable = true;
       enableCompletion = true;
       zprof.enable = false;
@@ -401,6 +328,7 @@ in
         dots = "/home/${config.home.username}/.dotfiles";
       };
     };
+
     bottom = {
       enable = true;
       settings = {
@@ -455,9 +383,6 @@ in
       enable = false;
     };
     broot.enable = true;
-    oh-my-posh = {
-      enable = true;
-    };
     gitui = {
       enable = true;
     };
@@ -474,6 +399,7 @@ in
       enable = true;
       enableInstantMode = true;
       enableNushellIntegration = true;
+      enableZshIntegration = true;
     };
     skim.enable = true;
     keychain.enable = true;
@@ -527,10 +453,6 @@ in
       enable = true;
     };
 
-    # taskwarrior = {
-    #   enable = true;
-    # };
-
     fuzzel = {
       enable = true;
     };
@@ -550,27 +472,12 @@ in
     keybase.enable = true;
     gnome-keyring.enable = true;
 
-    lorri = {
-      enable = true;
-    };
-
     mako = {
       enable = false;
     };
 
     spotifyd = {
       enable = true;
-    };
-
-    activitywatch = {
-      enable = true;
-      extraOptions = [
-        "--port"
-        "5600"
-      ];
-      settings = {
-        port = 5600;
-      };
     };
   };
 
