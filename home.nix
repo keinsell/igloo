@@ -48,32 +48,6 @@ in
     };
   };
 
-  accounts = {
-    email = {
-      # TODO: Add hydroxide to systemd
-      # TODO: Configure calendar
-      accounts = {
-        "keinsell@protonmail.com" = {
-          primary = true;
-          realName = "Jakub Olan";
-          userName = "keinsell@protonmail.com";
-          address = "keinsell@protonmail.com";
-          passwordCommand = "secret-tool lookup email keinsell@protonmail.com";
-          smtp = {
-            host = "127.0.0.1";
-            port = 1025;
-            tls.enable = false;
-          };
-          imap = {
-            host = "127.0.0.1";
-            port = 1143;
-            tls.enable = false;
-          };
-        };
-      };
-    };
-  };
-
   home = {
     # Bibata by some reason is not the most
     # popular theme for cursors however I will
@@ -97,154 +71,6 @@ in
     file = { };
 
     # https://searchix.alanpearce.eu/packages/nixpkgs/
-    packages = [
-      pkgs.python-cosmopolitan
-      pkgs.uv
-      pkgs.yai
-      pkgs.mods
-      pkgs.rclip
-      pkgs.codespelunker
-      pkgs.lsof
-      pkgs.zk
-      pkgs.unar
-      pkgs.inshellisense
-      pkgs.jq
-      pkgs.poppler
-      pkgs.fd
-      pkgs.fzf
-      pkgs.gum
-      pkgs.glow
-      pkgs.wluma
-      pkgs.gleam
-
-      # Download Manager
-      # ----------------
-      pkgs.vdhcoapp
-      pkgs.aria2
-
-      # Build Caching
-      # -------------
-      pkgs.sccache
-      pkgs.ccache
-
-      # Build Tools
-      # -----------
-      pkgs.gcc
-      pkgs.automake
-      pkgs.valgrind
-      pkgs.dbus
-      pkgs.pkgconf-unwrapped
-      pkgs.rustc
-      pkgs.rustc-demangle
-      pkgs.rust-jemalloc-sys
-      pkgs.openssl
-
-      # Development Environemnt
-      # pkgs.daytona-bin
-      pkgs.devenv
-      pkgs.deadnix
-      pkgs.statix
-      pkgs.comma
-      pkgs.alejandra
-      pkgs.nh
-      pkgs.manix
-      pkgs.nil
-      pkgs.niv
-      pkgs.nixci
-      pkgs.nixd
-      pkgs.nixel
-      pkgs.nixpacks
-      pkgs.npins
-      pkgs.go
-      pkgs.rust-analyzer-unwrapped
-      pkgs.rust-code-analysis
-      pkgs.rustfmt
-      pkgs.rustfilt
-      pkgs.zig
-
-      # ---------
-      # Java
-      # ---------
-      # See programs.java
-
-      # pkgs.kotlin
-      # pkgs.kotlin-native
-      # pkgs.kotlin-language-server
-      # pkgs.detekt
-      # pkgs.ktfmt
-      # pkgs.ktlint
-
-      # Programming - Node.js
-      # ---------------------
-
-      pkgs.nodejs
-      pkgs.typescript-language-server
-      pkgs.pnpm
-      pkgs.yarn
-      pkgs.bun
-      pkgs.deno
-      pkgs.typescript
-      # pkgs.assemblyscript
-      # pkgs.nodePackages.tsun
-      # pkgs.nodePackages.ts-node
-      # # pkgs.nodePackages.prisma
-      pkgs.turbo
-      pkgs.rslint
-      pkgs.oxlint
-      # pkgs.ezno
-      # # pkgs.edge-runtime
-      # pkgs.tyson
-      # pkgs.esbuild
-      # pkgs.nerdctl
-      pkgs.docker-client
-      pkgs.docker-distribution
-      # pkgs.docker
-      # pkgs.docker-compose
-      # pkgs.docker-buildx
-      # pkgs.docker-sync
-      # pkgs.lazydocker
-      # pkgs.dapper
-      # pkgs.cadvisor
-      # pkgs.docui
-      # pkgs.dive
-      # pkgs.diffoci
-      # pkgs.rootlesskit
-      # pkgs.kind
-      # pkgs.kompose
-      # pkgs.containerd
-      # pkgs.dockerfile-language-server-nodejs
-      # pkgs.conmon
-      # pkgs.gvisor
-      pkgs.earthly
-      pkgs.jetbrains-toolbox
-      pkgs.vesktop
-      pkgs.spot
-      pkgs.psst
-
-      # NetworkManager
-      # pkgs.gnome.networkmanager-vpnc
-      # pkgs.gnome.networkmanager-openvpn
-      # pkgs.gnome.networkmanager-openconnect
-      # pkgs.gnome.networkmanager-l2tp
-      # pkgs.gnomeExtensions.tailscale-qs
-      # pkgs.gnomeExtensions.wireguard-indicator
-
-      pkgs.gitmoji-cli
-      pkgs.tokei
-      pkgs.scc
-      pkgs.jrnl
-      pkgs.difftastic
-      pkgs.git-credential-manager
-      pkgs.meld
-      pkgs.resources
-      pkgs.gnome-keysign
-      # pkgs.cockpit
-      # pkgs.flatpak
-      pkgs.buku
-      pkgs.packer
-      # pkgs.codeowners
-      # pkgs.slint-lsp
-    ];
 
     sessionVariables = {
       EDITOR = "hx";
@@ -265,6 +91,7 @@ in
 
     shellAliases = {
       mux = "zellij";
+      nd = "nix develop";
     };
 
     preferXdgDirectories = true;
@@ -315,6 +142,7 @@ in
       enable = false;
       enableVteIntegration = true;
     };
+    
     zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -479,6 +307,7 @@ in
     spotifyd = {
       enable = true;
     };
+
   };
 
   # ---------------------------------------------------
