@@ -265,6 +265,7 @@ in
 
     shellAliases = {
       mux = "zellij";
+      nd = "nix develop";
     };
 
     preferXdgDirectories = true;
@@ -479,6 +480,8 @@ in
     spotifyd = {
       enable = true;
     };
+
+    nix = { enable = true; };
   };
 
   # ---------------------------------------------------
