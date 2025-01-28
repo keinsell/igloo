@@ -52,7 +52,7 @@
       # work.
       less
       rustup
-      zig
+      # zig
       nodejs_latest
       pnpm
       bun
@@ -121,6 +121,10 @@
       powerline-fonts
       yt-dlp
       cargo-binstall
+      purescript
+      purescript-psa
+      git-credential-manager
+      spago
     ]
     ++ (with nodePackages; [pnpm])
     ++ (
@@ -323,7 +327,7 @@
       };
 
       signing = {
-        signByDefault = true;
+        signByDefault = false;
         # Signing key was generated at 01/01/2025 and replaced older one which was used
         # Key itself is available on keyboase and can be imported to local machine using
         # keybase pgp pull-private "73D2E5DFD6CC2BD08C6822E45B8600D62E632A5A"
@@ -341,19 +345,20 @@
 
       extraConfig = {
         init.defaultBranch = "trunk";
-        credential =
-          if pkgs.stdenv.isDarwin
-          then {
-            helper = "osxkeychain";
-            useHttpPath = true;
-          }
-          else {
-            helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
-            credentialStore = "secretservice";
-            cacheOptions = {
-              timeout = 36000;
-            };
+        credential = {
+          helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
+
+          credentialStore =
+            if pkgs.stdenv.isDarwin
+            then "keychain"
+            else "secretservice";
+
+          cacheOptions = {
+            # This definitely not secure, but I'll handle that later.
+            # TODO: Are you crazy?!
+            timeout = 360000;
           };
+        };
 
         filter.lfs.clean = "${pkgs.git-lfs}/bin/git-lfs clean -- %f";
         filter.lfs.smudge = "${pkgs.git-lfs}/bin/git-lfs smudge -- %f";
